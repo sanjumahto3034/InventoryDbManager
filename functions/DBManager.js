@@ -35,8 +35,8 @@ const VerifyEmail = () => {
 
     // response = "250 2.1.0 OK g16-20020a056870a71000b001aa120af917si2999337oam.166 - gsmtp"
     if(response.includes("220")){
-      connection.write("HELO gmail.com",()=>{
-        console.log("Write HELO Success");
+      connection.write("HELO gmail.com",(res)=>{
+        console.log("Write HELO Success",res);
       });
     }
 
