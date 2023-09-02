@@ -20,7 +20,7 @@ const VerifyEmail = () => {
   const connection = net.createConnection(params);
   connection.on("connect", function () {
     console.log("Connecting to the Telnet server");
-    connection.write("HELO gmail.com\n",()=>{
+    connection.write("HELO att.net\n",()=>{
       console.log("Write HELO Success");
     });
     // Now you can send and receive data
