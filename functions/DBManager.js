@@ -20,6 +20,9 @@ const VerifyEmail = () => {
   const connection = net.createConnection(params);
   connection.on("connect", function () {
     console.log("Connecting to the Telnet server");
+    connection.write("HELO gmail.com\n",(res)=>{
+      console.log("Write HELO Success",res);
+    });
     // Now you can send and receive data
   });
   connection.on("ready", function () {
@@ -34,11 +37,11 @@ const VerifyEmail = () => {
     console.log("Received data: " + response);
 
     // response = "250 2.1.0 OK g16-20020a056870a71000b001aa120af917si2999337oam.166 - gsmtp"
-    if(response.includes("220")){
-      connection.write("HELO gmail.com\r\n",(res)=>{
-        console.log("Write HELO Success",res);
-      });
-    }
+    // if(response.includes("220")){
+    //   connection.write("HELO gmail.com\n",(res)=>{
+    //     console.log("Write HELO Success",res);
+    //   });
+    // }
 
     if(response.includes("250")){
       connection.write("mail from:<sanjumahto3034@gmail.com>",()=>{
