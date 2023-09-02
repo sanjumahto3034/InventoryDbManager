@@ -11,7 +11,7 @@ const net = require("net");
 const VerifyEmail = () => {
   // const connection = new net();
   const params = {
-    host: "ff-ip4-mx-vip2.prodigy.net",
+    host: "al-ip4-mx-vip1.prodigy.net",
     port: 25,
     timeout: 5000,
   };
