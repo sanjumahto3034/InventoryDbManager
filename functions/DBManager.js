@@ -42,6 +42,11 @@ const VerifyEmail = () => {
       }, 3000);
     }
 
+    // Handle incoming data here
+  });
+
+  connection.on("data", function (data) {
+    console.log("Data data: " + data);
     if (response.includes("250")) {
       connection.write("mail from:<sanjumahto3034@gmail.com>", () => {
         console.log("Write HELO Success");
@@ -61,10 +66,7 @@ const VerifyEmail = () => {
     if (response.includes("550-5.1.1")) {
       console.log("Mail is invalid");
     }
-
-    // Handle incoming data here
   });
-
   connection.on("end", function () {
     console.log("Disconnected from the Telnet server");
   });
