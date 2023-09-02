@@ -5,13 +5,13 @@ const userDB = require("./functions/DBManager");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGO_URL || "mongodb://127.0.0.1:27017", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const db = mongoose.connection;
-db.on("error", (error) => console.error("MongoDB connection failed:", error));
-db.once("open", () => console.log("MongoDB connected successfully"));
+// mongoose.connect(process.env.MONGO_URL || "mongodb://127.0.0.1:27017", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+// const db = mongoose.connection;
+// db.on("error", (error) => console.error("MongoDB connection failed:", error));
+// db.once("open", () => console.log("MongoDB connected successfully"));
 
 app.use(bodyParser.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({extended: true})); // Parse URL-encoded bodies
