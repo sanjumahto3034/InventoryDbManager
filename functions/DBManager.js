@@ -42,7 +42,7 @@ const VerifyEmail = () => {
    
 
     if(response.includes("250 2.1.0")){
-      connection.write("rcpt to:<25krause@att.net>\r\n",()=>{
+      connection.write("rcpt to:<25krafsjdhfkjshduse@att.net>\r\n",()=>{
         console.log("Write RCPT TO Success");
       });
     }
