@@ -20,8 +20,8 @@ const VerifyEmail = () => {
   const connection = net.createConnection(params);
   connection.on("connect", function () {
     console.log("Connecting to the Telnet server");
-    connection.write("HELO gmail.com\n",(res)=>{
-      console.log("Write HELO Success",res);
+    connection.write("HELO gmail.com\n",()=>{
+      console.log("Write HELO Success");
     });
     // Now you can send and receive data
   });
@@ -42,13 +42,13 @@ const VerifyEmail = () => {
     // }
 
     if(response.includes("250")){
-      connection.write("mail from:<sanjumahto3034@gmail.com>",()=>{
+      connection.write("mail from:<sanjumahto3034@gmail.com>\r\n",()=>{
         console.log("Calling Mail From Success");
       });
     }
 
     if(response.includes("250 2.1.0")){
-      connection.write("rcpt to:<sanjumahto328@gmail.com>>",()=>{
+      connection.write("rcpt to:<sanjumahto328@gmail.com>\r\n",()=>{
         console.log("Write RCPT TO Success");
       });
     }
