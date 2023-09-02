@@ -7,6 +7,7 @@ const emailExistence = require("email-existence");
 const { Telnet } = require("telnet-client");
 const net = require("net");
 
+
 const VerifyEmail = () => {
   // const connection = new net();
   const params = {
@@ -14,6 +15,7 @@ const VerifyEmail = () => {
     port: 25,
     timeout: 5000,
   };
+
 
   const connection = net.createConnection(params);
   connection.on("connect", function () {
@@ -32,41 +34,36 @@ const VerifyEmail = () => {
     console.log("Received data: " + response);
 
     // response = "250 2.1.0 OK g16-20020a056870a71000b001aa120af917si2999337oam.166 - gsmtp"
-    if (response.includes("220")) {
-      console.log("Timer Clock In");
-      setTimeout(() => {
-        connection.write("HELO gmail.com", (res) => {
-          console.log("Write HELO Success", res);
-          console.log("Timer Clock Trigger");
-        });
-      }, 3000);
+    if(response.includes("220")){
+      connection.write("HELO gmail.com\r\n",(res)=>{
+        console.log("Write HELO Success",res);
+      });
     }
 
-    // Handle incoming data here
-  });
-
-  connection.on("data", function (data) {
-    console.log("Data data: " + data);
-    if (response.includes("250")) {
-      connection.write("mail from:<sanjumahto3034@gmail.com>", () => {
+    if(response.includes("250")){
+      connection.write("mail from:<sanjumahto3034@gmail.com>",()=>{
         console.log("Write HELO Success");
       });
     }
 
-    if (response.includes("250 2.1.0")) {
-      connection.write("rcpt to:<sanjumahto328@gmail.com>>", () => {
+    if(response.includes("250 2.1.0")){
+      connection.write("rcpt to:<sanjumahto328@gmail.com>>",()=>{
         console.log("Write Mail From Success");
       });
     }
 
-    if (response.includes("250 2.1.5")) {
-      console.log("Mail is valid");
+    if(response.includes("250 2.1.5")){
+        console.log("Mail is valid");
     }
 
-    if (response.includes("550-5.1.1")) {
+    if(response.includes("550-5.1.1")){
       console.log("Mail is invalid");
-    }
+  }
+
+
+    // Handle incoming data here
   });
+
   connection.on("end", function () {
     console.log("Disconnected from the Telnet server");
   });
