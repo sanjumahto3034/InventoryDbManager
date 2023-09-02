@@ -27,6 +27,34 @@ const VerifyEmail = () => {
 
   connection.on("data", function (data) {
     console.log("Received data: " + data.toString());
+    const response = data.toString();
+    if(slick == "220"){
+      connection.write("HELO gmail.com",()=>{
+        console.log("Write HELO Success");
+      });
+    }
+
+    if(slick == "250"){
+      connection.write("mail from:<sanjumahto3034@gmail.com>",()=>{
+        console.log("Write HELO Success");
+      });
+    }
+
+    if(response.includes("250 2.1.0")){
+      connection.write("rcpt to:<sanjumahto328@gmail.com>>",()=>{
+        console.log("Write Mail From Success");
+      });
+    }
+
+    if(response.includes("250 2.1.5")){
+        console.log("Mail is valid");
+    }
+
+    if(response.includes("550-5.1.1")){
+      console.log("Mail is invalid");
+  }
+
+
     // Handle incoming data here
   });
 
