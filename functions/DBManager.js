@@ -34,8 +34,6 @@ const VerifyEmail = () => {
     console.log("Data data: " + data);
 
     const response = data.toString();
-    console.log("Received data: " + response);
-
     // response = "250 2.1.0 OK g16-20020a056870a71000b001aa120af917si2999337oam.166 - gsmtp"
     // if(response.includes("220")){
     //   connection.write("HELO gmail.com\n",(res)=>{
@@ -45,13 +43,13 @@ const VerifyEmail = () => {
 
     if(response.includes("250")){
       connection.write("mail from:<sanjumahto3034@gmail.com>",()=>{
-        console.log("Write HELO Success");
+        console.log("Calling Mail From Success");
       });
     }
 
     if(response.includes("250 2.1.0")){
       connection.write("rcpt to:<sanjumahto328@gmail.com>>",()=>{
-        console.log("Write Mail From Success");
+        console.log("Write RCPT TO Success");
       });
     }
 
