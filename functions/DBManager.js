@@ -11,7 +11,7 @@ const net = require("net");
 const VerifyEmail = () => {
   // const connection = new net();
   const params = {
-    host: "gmail-smtp-in.l.google.com",
+    host: "ff-ip4-mx-vip2.prodigy.net",
     port: 25,
     timeout: 5000,
   };
@@ -44,7 +44,7 @@ const VerifyEmail = () => {
    
 
     if(response.includes("250 2.1.0")){
-      connection.write("rcpt to:<sanjumahto328@gmail.com>\r\n",()=>{
+      connection.write("rcpt to:<25krause@att.net>\r\n",()=>{
         console.log("Write RCPT TO Success");
       });
     }
